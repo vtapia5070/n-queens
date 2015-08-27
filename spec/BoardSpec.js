@@ -19,6 +19,37 @@ describe("Board", function() {
     });
   };
 
+  // describe("Minor Diagonal conflict tests", function() {
+  //   // debugger;
+  //   var b = new Board({n:4});
+  //   for (var i = 0; i < b.get('n'); i++) {
+  //       it("should report empty board at index " + i + " to have no conflicts", function() {
+  //         expect(b.hasMinorDiagonalConflictAt()).to.be.equal(false);
+  //       });
+  //     }
+
+  //   b.togglePiece(2,0);
+
+  //   for (var i = 0; i < b.get('n'); i++) {
+  //       it("should report empty board at index " + i + " to have no conflicts", function() {
+  //         expect(b.hasMinorDiagonalConflictAt()).to.be.equal(false);
+  //       });
+  //     }
+  //   b.togglePiece(0,2);
+  //   it("should report empty board at index " + 0 + " to have no conflicts", function() {
+  //         expect(b.hasMinorDiagonalConflictAt(0)).to.be.equal(false);
+  //       });
+  //   it("should report empty board at index " + 1 + " to have no conflicts", function() {
+  //         expect(b.hasMinorDiagonalConflictAt(1)).to.be.equal(false);
+  //       });
+  //   it("should report empty board at index " + 2 + " to have no conflicts", function() {
+  //         expect(b.hasMinorDiagonalConflictAt(2)).to.be.equal(true);
+  //       });
+  //   it("should report empty board at index " + 3 + " to have no conflicts", function() {
+  //         expect(b.hasMinorDiagonalConflictAt(3)).to.be.equal(false);
+  //       });
+  // });
+
   describe("Empty board", function() {
     verifyConflictTypes([''], [
       [0, 0, 0, 0],
@@ -54,6 +85,8 @@ describe("Board", function() {
       [0, 0, 0, 0]
     ]);
   });
+
+  // debugger;
 
   describe("Board with minor diagonal conflicts", function() {
     verifyConflictTypes(['minorDiagonal', 'queens'], [
