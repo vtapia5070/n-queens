@@ -128,21 +128,6 @@
     //
     // test if a specific major diagonal on this board contains a conflict
 
-    // getReducedRep: function() {
-    //   var arr = [];
-    //   if (!(this.hasAnyColConflicts || this.hasAnyRowConflicts)) {
-    //     for (var i = 0; i < this.rows().length; i++) {
-    //       for (var j = 0; this.rows()[i].length; j++) {
-    //         if (this.get(i)[j] === 1) {
-    //           arr.push(j);
-    //         }
-    //       }
-    //     }
-    //   } 
-    //   return arr;
-    // }
-
-
     hasMajorDiagonalConflictAt: function(majorDiagonalColumnIndexAtFirstRow) {     
       var n = this.get('n');
       var y = majorDiagonalColumnIndexAtFirstRow % n;

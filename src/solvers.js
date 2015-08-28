@@ -14,9 +14,7 @@
 // return a matrix (an array of arrays) representing a single nxn chessboard, with n rooks placed such that none of them can attack each other
 
 window.AllRookInfo = {};
-//contain all soutions
 AllRookInfo.AllSolutions = [];
-//array of arrays of possible 
 AllRookInfo.summar = {};
 AllRookInfo.summar.n = 0;
 AllRookInfo.summar.index = 0;
@@ -31,6 +29,7 @@ window.findNRooksSolution = function(n) {
     return AllRookInfo.AllSolutions;
   }
   this.permute(AllRookInfo.AllSolutions,n);
+  debugger;
   if (AllRookInfo.AllSolutions.length !== 0) {
     AllRookInfo.summar.n = n;
     AllRookInfo.summar.totSol = AllRookInfo.AllSolutions.length;
@@ -42,18 +41,16 @@ window.findNRooksSolution = function(n) {
   return solution;
 };
 
-
-
 // return the number of nxn chessboards that exist, with n rooks placed such that none of them can attack each other
 window.countNRooksSolutions = function(n) {
-  var solutionCount; //fixme
+  var solutionCount;
   if (n === AllRookInfo.summar.n) {
     solutionCount = AllRookInfo.summar.totSol;
   } else {
     this.findNRooksSolution(n);
     solutionCount = AllRookInfo.summar.totSol;
   }
-  // console.log('Number of solutions for ' + n + ' rooks:', solutionCount);
+  console.log('Number of solutions for ' + n + ' rooks:', solutionCount);
   return solutionCount;
 };
 
@@ -66,6 +63,7 @@ AllQueenInfo.summar.totSol = 0;
 
 // return a matrix (an array of arrays) representing a single nxn chessboard, with n queens placed such that none of them can attack each other
 window.findNQueensSolution = function(n) {
+
   AllQueenInfo.AllSolutions = [];
   if (n === 1) {
     AllQueenInfo.AllSolutions = [[1]];
@@ -88,13 +86,14 @@ window.findNQueensSolution = function(n) {
     AllQueenInfo.summar.index++;
   }
   if (AllQueenInfo.AllSolutions.length === 0) {
+    AllQueenInfo.AllSolutions = [this.makeEmptyMatrix(n)];
     AllQueenInfo.summar.n = n;
-    AllQueenInfo.summar.totSol = AllQueenInfo.AllSolutions.length;
+    AllQueenInfo.summar.totSol = 0;
     AllQueenInfo.summar.index = AllQueenInfo.summar.index % AllQueenInfo.summar.totSol;
     AllQueenInfo.summar.index++;
   }
-  var solution = AllQueenInfo.summar.totSol !== 0 ? AllQueenInfo.AllSolutions[AllQueenInfo.summar.index] : this.createEmptyArray(n);
-  // console.log('Single solution for ' + n + ' queens:', JSON.stringify(solution));
+  var solution = AllQueenInfo.summar.totSol !== 0 ? AllQueenInfo.AllSolutions[AllQueenInfo.summar.index] : this.makeEmptyMatrix(n);
+  console.log('Single solution for ' + n + ' queens:', JSON.stringify(solution));
   return solution;
 };
 
@@ -108,7 +107,7 @@ window.countNQueensSolutions = function(n) {
     this.findNQueensSolution(n);
     solutionCount = AllQueenInfo.summar.totSol;
   }
-  // console.log('Number of solutions for ' + n + ' queens:', solutionCount);
+  console.log('Number of solutions for ' + n + ' queens:', solutionCount);
   return solutionCount;
 };
 
@@ -143,15 +142,7 @@ window.correctRookSoln = function(arr, n) {
     b.togglePiece(i,arr[i]);
   }
   return b.rows();
-}
-
-window.createEmptyBoard = function (n) {
-  var arr = [];
-  for (var i = 0; i < n; i++) {
-    arr.push(this.createEmptyArray(n));
-  }
-  return arr;
-}
+};
 
 window.createEmptyArray = function(n) {
   var arr = [];
@@ -159,14 +150,31 @@ window.createEmptyArray = function(n) {
     arr.push(0);
   }
   return arr;
-}
+};
 
+// window.printSolution = function(arr) {
+//   var n = arr.length;
+//   for (var i = 0; i < n; i++) {
+//     var str = "";
+//     for (var j = 0; j < n; j++) {
+//       if (arr[i][j] === 1) {
+//         str += "|*";
+//       } else {
+//         str += "| ";
+//       }
+//     }
+//     str += "|";
+//     console.log(str);
+//   } 
+// }
 
-
-
-
-
-
+window.makeEmptyMatrix = function(n) {
+    return _(_.range(n)).map(function() {
+      return _(_.range(n)).map(function() {
+        return 0;
+      });
+    });
+  };
 
 
 

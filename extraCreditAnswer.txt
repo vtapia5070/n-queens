@@ -1,0 +1,13 @@
+.hasAnyQueensConflicts is O(n^2);
+
+
+
+1.) sum up all of the elements in the rows and if it's > 1 then we have conflict
+
+
+2.) convert the array of 1's and 0's into a decimal and check if it's >1, if it is we have conflict
+
+3.) convert the array of 1's and 0's into a decimal and use bitwise operators to check if > 1, if it is we have conflict. Have a counter and when the bitwise operation detects a 1, incriment counter. 
+
+
+parseInt(arr.join(''),2);
